@@ -1,13 +1,13 @@
 class Usuario{
-    constructor(nombre, apellido){
+    constructor(nombre, apellido, libros = [], mascotas = []){
         this.nombre = nombre
         this.apellido = apellido
-        this.libros = []
-        this.mascotas = []
+        this.libros = libros
+        this.mascotas = mascotas
     }
 
     getFullName(){
-        let fullName= `${this.nombre +" "+ this.apellido}`
+        let fullName= `${this.nombre} ${this.apellido}`
         return fullName
     };
 
@@ -18,8 +18,8 @@ this.mascotas.push(mascota)
         return this.mascotas.length
     }
 
-    addBook(book){
-        this.libros.push(book)
+    addBook(bookName, bookAutor){
+        this.libros.push({nombre:bookName, autor:bookAutor})
     }
     getBookNames(){
         let arr = this.libros.map( (libro)=>{
@@ -29,14 +29,15 @@ this.mascotas.push(mascota)
     }
 }
 
-const emiliano = new Usuario("emiliano", "cabaña");
+const emiliano = new Usuario("emiliano", "cabaña",);
 const michelle = new Usuario("michelle", "lucero");
 
 console.log(emiliano.getFullName());
 emiliano.addMascota("caballo");
 emiliano.addMascota("gallina");
 console.log(emiliano.countMascotas());
-emiliano.addBook({nombre:"A sangre fria", autor:"Truman Capone"});
-emiliano.addBook({nombre: "El alquimista", autor: "Paulo Cohelo"});
+emiliano.addBook("A sangre fria","Truman Capone");
+emiliano.addBook("El alquimista", "Paulo Cohelo");
 console.log(emiliano);
 console.log(emiliano.getBookNames());
+
